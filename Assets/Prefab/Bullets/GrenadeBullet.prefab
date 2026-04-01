@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3609571698579417733}
   - component: {fileID: 7037447794939304064}
+  - component: {fileID: 5952630793903649681}
   m_Layer: 0
   m_Name: GrenadeBullet
   m_TagString: Untagged
@@ -59,7 +60,22 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &5952630793903649681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561425818126124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3546d5c16cf98146b8b23fea361e232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrenadeBullet
+  explosionPrefab: {fileID: 2433282508537954060, guid: b7bec5c242b16e6468807a1e09d725ad, type: 3}
+  explosionRadius: 4
+  explosionForce: 20
 --- !u!1001 &1177228176760098511
 PrefabInstance:
   m_ObjectHideFlags: 0
