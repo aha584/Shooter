@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotateByMouse : MonoBehaviour
 {
-    public float angleOverDistant;
+    public float angleOverDistance;
 
     public Transform cameraHolder;
     public float minPitch;
@@ -12,7 +12,7 @@ public class RotateByMouse : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -25,12 +25,12 @@ public class RotateByMouse : MonoBehaviour
     }
     private void HorizontalRotate(float mouseX)
     {
-        float deltaX = mouseX * angleOverDistant;
+        float deltaX = mouseX * angleOverDistance;
         transform.Rotate(0, deltaX, 0);
     }
     private void VerticalRotate(float mouseY)
     {
-        float deltaY = -mouseY * angleOverDistant;
+        float deltaY = -mouseY * angleOverDistance;
         pitch = Mathf.Clamp(pitch + deltaY, minPitch, maxPitch);
         cameraHolder.localEulerAngles = new Vector3(pitch, 0, 0);
     }
