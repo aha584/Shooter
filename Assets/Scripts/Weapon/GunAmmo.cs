@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunAmmo : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class GunAmmo : MonoBehaviour
     public GrenadeLauncher launcher;
     public Animator myAnimator;
     public AudioSource[] reloadSounds;
+    public UnityEvent loadedAmmoChanged;
 
     [SerializeField] private int _loadedAmmo;
 
@@ -16,6 +18,7 @@ public class GunAmmo : MonoBehaviour
         set
         {
             _loadedAmmo = value;
+            loadedAmmoChanged.Invoke();
             if(_loadedAmmo <=0)
             {
                 Reload();
