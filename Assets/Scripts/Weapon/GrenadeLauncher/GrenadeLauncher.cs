@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrenadeLauncher : MonoBehaviour
+public class GrenadeLauncher : Shooting
 {
     [Header("Gun Stuff")]
     public Animator myAnimator;

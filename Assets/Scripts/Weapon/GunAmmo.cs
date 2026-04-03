@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class GunAmmo : MonoBehaviour
 {
     public int magSize;
-    public GrenadeLauncher launcher;
+    public Shooting shooting;
     public Animator myAnimator;
     public AudioSource[] reloadSounds;
     public UnityEvent loadedAmmoChanged;
@@ -34,8 +34,8 @@ public class GunAmmo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() => RefillAmmo();
 
-    private void LockSooting() => launcher.enabled = false;
-    private void UnlockSooting() => launcher.enabled = true;
+    private void LockSooting() => shooting.enabled = false;
+    private void UnlockSooting() => shooting.enabled = true;
     public void SingleFireAmmoCounter() => LoadedAmmo--;
 
     private void Update()
