@@ -21,7 +21,7 @@ public class AutomaticShooting : Shooting
 
     private float lastShotTime;
     private float interval;
-    private bool isStop;
+    [SerializeField] private bool isStop;
     [SerializeField] private float stopDuration;
     private float timer = 0f;
 
@@ -57,21 +57,7 @@ public class AutomaticShooting : Shooting
     {
         myAnimator.Play("Shoot", layer: -1, normalizedTime: 0);
         Debug.Log("Shoot Sound Play");
-        PerformRaycasting();
         onShoot.Invoke();
-    }
-
-    private void PerformRaycasting()
-    {
-        Ray aimingRay = new Ray(aimingCamera.transform.position, aimingCamera.transform.forward);
-        //Debug.Log("Get Aiming Ray");
-        if(Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
-        {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
-            //Debug.Log("Get Quaternion");
-            Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
-            //Debug.Log("Clone marker");
-        }
     }
     private void StopMuzzle()
     {
@@ -79,9 +65,14 @@ public class AutomaticShooting : Shooting
         if (timer < stopDuration) timer += Time.deltaTime;
         else
         {
-            onStop.Invoke();
+            StopInvoke();
             timer = 0;
             isStop = false;
         }
+    }
+    public void StopInvoke()
+    {
+        Debug.Log("Stop Invoke");
+        onStop.Invoke();
     }
 }

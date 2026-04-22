@@ -8,6 +8,9 @@ public class GunAmmo : MonoBehaviour
     public Shooting shooting;
     public Animator myAnimator;
     public AudioSource[] reloadSounds;
+    //Can use solution 2  for this
+    //Use UnityEvent<int> and invoke with _loadedAmmo in this.
+    //In AmmoText, we no need to implement GunAmmo ref to that script
     public UnityEvent loadedAmmoChanged;
 
     [SerializeField] private int _loadedAmmo;
@@ -34,7 +37,7 @@ public class GunAmmo : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() => RefillAmmo();
 
-    private void LockSooting() => shooting.enabled = false;
+    private void LockShooting() => shooting.enabled = false;
     private void UnlockSooting() => shooting.enabled = true;
     public void SingleFireAmmoCounter() => LoadedAmmo--;
 
@@ -48,9 +51,9 @@ public class GunAmmo : MonoBehaviour
 
     private void Reload()
     {
+        LockShooting();
         Debug.Log("Reload");
         myAnimator.SetTrigger("Reload");
-        LockSooting();
     }
     public void AddAmmo() => RefillAmmo();
 
@@ -76,4 +79,8 @@ public class GunAmmo : MonoBehaviour
     {
         Debug.Log("Sound 5");
     }
+
+    public void OnGunSelected() => UpdateShootingLock();
+
+    private void UpdateShootingLock() => shooting.enabled = _loadedAmmo > 0;
 }
