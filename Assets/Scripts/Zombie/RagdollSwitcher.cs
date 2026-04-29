@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RagdollSwitcher : MonoBehaviour
@@ -42,6 +43,19 @@ public class RagdollSwitcher : MonoBehaviour
         for(int i = 0; i < rigids.Length; i++)
         {
             rigids[i].isKinematic = !ragdollEnable;
+        }
+    }
+    [ContextMenu("Add HitSurface")]
+    private void AddHitSurface()
+    {
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach(Collider collider in colliders)
+        {
+            if(gameObject.GetComponent<HitSurface>() == null)
+            {
+                var hitSurface = collider.gameObject.AddComponent<HitSurface>();
+                hitSurface.surfaceType = HitSurfaceType.Blood;
+            }
         }
     }
 }
