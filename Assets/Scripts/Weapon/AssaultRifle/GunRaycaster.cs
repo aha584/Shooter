@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GunRaycaster : MonoBehaviour
 {
-    public GameObject hitMarkerPrefab;
     public Camera aimingCamera;
     public LayerMask layerMask;
     public int damage;
@@ -13,9 +12,8 @@ public class GunRaycaster : MonoBehaviour
         //Debug.Log("Get Aiming Ray");
         if (Physics.Raycast(aimingRay, out RaycastHit hitInfo, 1000f, layerMask))
         {
-            Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
             //Debug.Log("Get Quaternion");
-            Instantiate(hitMarkerPrefab, hitInfo.point, effectRotation);
+            ShowHitEffect(hitInfo);
             //Debug.Log("Clone marker");
             DeliveryDamage(hitInfo);
         }
@@ -26,6 +24,20 @@ public class GunRaycaster : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(damage);
+        }
+    }
+
+    private void ShowHitEffect(RaycastHit hitInfo)
+    {
+        HitSurface hitSurface = hitInfo.collider.GetComponent<HitSurface>();
+        if(hitSurface != null)
+        {
+            GameObject effectPreafb = HitEffectManager.Instance.GetEffectPrefab(hitSurface.surfaceType);
+            if(effectPreafb != null)
+            {
+                Quaternion effectRotation = Quaternion.LookRotation(hitInfo.normal);
+                Instantiate(effectPreafb, hitInfo.point, effectRotation);
+            }
         }
     }
 }
