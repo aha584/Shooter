@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GrenadeBullet : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GrenadeBullet : MonoBehaviour
     public float explosionRadius;
     public float explosionForce;
     public int damage;
+
+    private List<Health> oldVictims = new();
 
     private void OnCollisionEnter(Collision other)
     {
@@ -17,6 +20,7 @@ public class GrenadeBullet : MonoBehaviour
 
     private void BlowObject()
     {
+        oldVictims.Clear();
         Collider[] detecedObject = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach(var obj in detecedObject)
         {
@@ -26,10 +30,11 @@ public class GrenadeBullet : MonoBehaviour
     }
     private void DeliverDamage(Collider victim)
     {
-        Health health = victim.GetComponent<Health>();
-        if (health != null)
+        Health health = victim.GetComponentInParent<Health>();
+        if (health != null && !oldVictims.Contains(health))
         {
             health.TakeDamage(damage);
+            oldVictims.Add(health);
         }
     }
     private void AddForceToObject(Collider affectedObject)

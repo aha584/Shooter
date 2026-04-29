@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public Animator myAnimator;
     public UnityEvent onDie;
 
-    private int currentHealthPoint;
+    [SerializeField] private int currentHealthPoint;
     public bool IsDead => currentHealthPoint <= 0;
 
     private void Start()
