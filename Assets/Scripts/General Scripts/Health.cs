@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     public int maxHealthPoint;
     public Animator myAnimator;
+    public UnityEvent onDie;
 
     private int currentHealthPoint;
     public bool IsDead => currentHealthPoint <= 0;
@@ -23,5 +25,9 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    private void Die() => myAnimator.SetTrigger("Die");
+    private void Die()
+    {
+        myAnimator.SetTrigger("Die");
+        onDie.Invoke();
+    }
 }
