@@ -13,19 +13,13 @@ public class HitEffectMapper
     public GameObject effectPrefab;
 }
 
-public class HitEffectManager : MonoBehaviour
+public class HitEffectManager : Singleton<HitEffectManager>
 {
     public HitEffectMapper[] effectMapps;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject GetEffectPrefab(HitSurfaceType surfaceType)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HitEffectMapper mapper = System.Array.Find(effectMapps, x => x.surface == surfaceType);
+        return mapper?.effectPrefab;
     }
 }
