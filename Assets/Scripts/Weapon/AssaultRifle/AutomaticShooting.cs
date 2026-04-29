@@ -10,10 +10,7 @@ public class AutomaticShooting : Shooting
     public AudioSource shootSound;
     //public GunAmmo myAmmo;
 
-    [Header("Hit Marker Stuff")]
-    public GameObject hitMarkerPrefab;
-    public Camera aimingCamera;
-    public LayerMask layerMask;
+    public GunRaycaster gunRaycaster;
 
     [Header("Event")]
     public UnityEvent onShoot;
@@ -57,6 +54,7 @@ public class AutomaticShooting : Shooting
     {
         myAnimator.Play("Shoot", layer: -1, normalizedTime: 0);
         Debug.Log("Shoot Sound Play");
+        gunRaycaster.PerformRaycasting();
         onShoot.Invoke();
     }
     private void StopMuzzle()

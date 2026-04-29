@@ -1765,11 +1765,7 @@ MonoBehaviour:
   myAnimator: {fileID: 672276143}
   rpm: 600
   shootSound: {fileID: 280284756}
-  hitMarkerPrefab: {fileID: 100002, guid: 2f9348d6583cde14eb0d82bb9732647e, type: 3}
-  aimingCamera: {fileID: 330585545}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 55
+  gunRaycaster: {fileID: 672276146}
   onShoot:
     m_PersistentCalls:
       m_Calls:
@@ -3622,7 +3618,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
