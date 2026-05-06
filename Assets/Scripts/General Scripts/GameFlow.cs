@@ -1,0 +1,22 @@
+using UnityEngine;
+
+public class GameFlow : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void OnPlayerDie()
+    {
+        Time.timeScale = 0f;
+        Debug.Log("Player Die!!");
+    }
+}

@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public int maxHealthPoint;
-    public Animator myAnimator;
     public UnityEvent onDie;
 
     [SerializeField] private int currentHealthPoint;
@@ -27,7 +26,6 @@ public class Health : MonoBehaviour
     }
     private void Die()
     {
-        myAnimator.SetTrigger("Die");
-        onDie.Invoke();
+        onDie?.Invoke();
     }
 }
