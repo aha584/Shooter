@@ -5,8 +5,24 @@ public class Health : MonoBehaviour
 {
     public int maxHealthPoint;
     public UnityEvent onDie;
+    public UnityEvent<int, int> onHealthChanged;
 
     [SerializeField] private int currentHealthPoint;
+
+    public int HealthPoint
+    {
+        get => currentHealthPoint;
+        set
+        {
+            currentHealthPoint = value;
+            onHealthChanged?.Invoke(currentHealthPoint, maxHealthPoint);
+        }
+    }
+
+
+
+
+
     public bool IsDead => currentHealthPoint <= 0;
 
     private void Start()
