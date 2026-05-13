@@ -399,7 +399,19 @@ MonoBehaviour:
         m_CallState: 2
   onHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1693134401}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: HealthValueChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentHealthPoint: 0
 --- !u!1 &2233191 stripped
 GameObject:
@@ -1035,7 +1047,19 @@ MonoBehaviour:
         m_CallState: 2
   onHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2138198352}
+        m_TargetAssemblyTypeName: HealthBar, Assembly-CSharp
+        m_MethodName: HealthValueChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentHealthPoint: 0
 --- !u!114 &18034539
 MonoBehaviour:
