@@ -412,6 +412,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1693134404}
+        m_TargetAssemblyTypeName: AutoFade, Assembly-CSharp
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentHealthPoint: 0
 --- !u!1 &2233191 stripped
 GameObject:
@@ -1060,6 +1075,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   currentHealthPoint: 0
 --- !u!114 &18034539
 MonoBehaviour:
@@ -1968,6 +1986,7 @@ GameObject:
   - component: {fileID: 323592530}
   - component: {fileID: 323592529}
   - component: {fileID: 323592531}
+  - component: {fileID: 323592532}
   m_Layer: 5
   m_Name: Scratch Right
   m_TagString: Untagged
@@ -2044,9 +2063,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ed405306522b640b8bf5a6c9bfe769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoFade
-  visibleDuration: 0
-  fadeDuration: 0
-  image: {fileID: 323592529}
+  visibleDuration: 1
+  fadeDuration: 0.5
+  group: {fileID: 323592532}
+--- !u!225 &323592532
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323592527}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,6 +2354,7 @@ GameObject:
   - component: {fileID: 452602800}
   - component: {fileID: 452602799}
   - component: {fileID: 452602801}
+  - component: {fileID: 452602802}
   m_Layer: 5
   m_Name: Scratch Left
   m_TagString: Untagged
@@ -2401,7 +2433,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AutoFade
   visibleDuration: 1
   fadeDuration: 0.5
-  image: {fileID: 452602799}
+  group: {fileID: 452602802}
+--- !u!225 &452602802
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452602797}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &480367845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5555,6 +5599,7 @@ GameObject:
   - component: {fileID: 1497378349}
   - component: {fileID: 1497378348}
   - component: {fileID: 1497378347}
+  - component: {fileID: 1497378351}
   m_Layer: 5
   m_Name: Zombie Health Bar
   m_TagString: Untagged
@@ -5645,6 +5690,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.0218575}
   m_SizeDelta: {x: 304.6965, y: 52.9647}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1497378351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497378346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6991a1f0c6ae7d4ea619242d508f4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BillBoard
+  mainCamera: {fileID: 0}
 --- !u!54 &1503581989
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5943,6 +6001,8 @@ GameObject:
   - component: {fileID: 1693134403}
   - component: {fileID: 1693134402}
   - component: {fileID: 1693134401}
+  - component: {fileID: 1693134404}
+  - component: {fileID: 1693134405}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -6022,6 +6082,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693134399}
   m_CullTransparentMesh: 1
+--- !u!114 &1693134404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693134399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ed405306522b640b8bf5a6c9bfe769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoFade
+  visibleDuration: 2
+  fadeDuration: 1
+  group: {fileID: 1693134405}
+--- !u!225 &1693134405
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693134399}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1709959881
 GameObject:
   m_ObjectHideFlags: 0
